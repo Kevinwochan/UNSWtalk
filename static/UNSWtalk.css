@@ -1,0 +1,242 @@
+/*
+ * written by andrewt@cse.unsw.edu.au October 2017
+ * as a starting point for COMP[29]041 assignment 2
+ * https://cgi.cse.unsw.edu.au/~cs2041/assignments/UNSWtalk/
+ *
+ * Change (or replace) the CSS below to create you own look-and-feel
+ *
+ * You will probably want to add  CSS to this file too
+ */
+
+
+/*
+	universal element formatting
+*/
+p{
+	word-wrap:break-word;
+}
+img {
+	max-height: 100%;
+    max-width: 100%;
+}
+body {
+	margin-top:50px;
+	position:relative;
+}
+.thumbnail-small img{
+	height:70px;
+	width:70px;
+}
+.thumbnail-medium img{
+	height:120px;
+	width:120px
+}
+/*
+	cotainer layout
+*/
+.nav-bar {
+    width:100%;
+    background-color: black;
+}
+.nav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(27, 39, 51, 0.9);
+	position:fixed;
+	top:0;
+	left:0;
+	height:50px;
+width:100%;
+}
+.nav-bar form, .navbar [type="submit"], .nav-bar [type="text"] {
+	height:50px;
+}
+.nav-bar li {
+    float: left;
+    border-right:1px solid #bbb;
+	height:100%;
+}
+
+.nav-bar li:last-child,.nav-bar li:nth-last-child(2) {
+    border-right: none;
+	float:right;
+}
+
+.nav-bar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	height:100%;
+}
+
+.nav-bar li a:hover:not(.active) {
+    background-color: rgba(27, 39, 51, 0.9);
+}
+
+.active {
+    background-color: rgba(27, 39, 51, 0.9);
+}
+.unswtalk_heading {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.unswtalk_user_details {
+    border:thin solid #204142;
+    border-radius: 1em;
+    padding-left: 0.42em;
+}
+
+.unswtalk_button {
+    background-color: #FEDBCA;
+    border:thin solid #904142;
+    border-radius: 0.42em;
+    color: #904142;
+}
+/*
+	UNSW talk news feed
+*/
+.unswtalk-post-page {
+	max-width:600px;
+}
+.post{
+	padding:20px;
+	min-height:170px;
+	max-width:500px;
+    border-top: 1px solid #c1c1c1;
+}
+.recent-posts:last-child{
+    border-bottom: 1px solid #c1c1c1;
+}
+.post .post-display-picture {
+	padding-right:10px;
+	width: 100px;
+	float:left;
+	text-align:center;
+}
+.post .post-text{
+	margin-left:100px;
+}
+.comments {
+	padding-left:40px;
+}
+.comment {
+	min-height:120px;
+	outline: 1px solid #c1c1c1;
+}
+.comment .comment-text {
+	margin-left:100px;
+}
+.comment .comment-display-picture{
+	padding-right: 10px;
+	width:120px;
+	height:auto;
+	float:left;
+	text-align:center;
+}
+/*
+	UNSW post page
+*/
+
+/*
+	UNSW talk Profile Page
+*/
+.profile-section {
+	padding-bottom:50px;
+	position:relative;
+	height:300px;
+}
+.profile-picture img {
+	position:absolute;
+	top:40px;
+	left:40px;
+}
+.profile-info {
+	float:left;
+	position:absolute;
+	top: 50px;
+	left: 250px;
+}
+.profile-picture img, .profile-picture{
+	display:inline-block;
+	float:left;
+	width:200px;
+	height:auto;
+}
+.friends-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	display:block;
+	width:100%;
+   
+}
+.friends-list li{
+	float:left;
+	height:100px;
+	width:390px;
+    border: 1px solid #e9ebee;
+}
+
+.friends-list li a {
+    margin: 0 0 13px 13px;
+    padding: 0 10px 0 0;
+    text-decoration: none;text-align: center;
+	color: #365899;
+    cursor: pointer;
+    text-decoration: none;
+	font-weight: bold;
+    font-size: 14px;
+}
+
+.friends-list img {
+	height:auto;
+	line-height:0;
+	width:100px;
+	float:left;
+}
+/*
+	search page
+*/
+.search-results{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	display:block;
+	width:100%;
+   
+}
+.search-results li{
+	height:100px;
+	float:left;
+	width:390px;
+    border: 1px solid #e9ebee;
+}
+
+.search-results li a {
+    margin: 0 0 13px 13px;
+    padding: 0 10px 0 0;
+    text-decoration: none;text-align: center;
+	color: #365899;
+    cursor: pointer;
+    text-decoration: none;
+	font-weight: bold;
+    font-size: 14px;
+}
+
+.search-results img {
+	height:auto;
+	line-height:0;
+	width:100px;
+	float:left;
+}

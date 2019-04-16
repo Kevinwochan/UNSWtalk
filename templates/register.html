@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block body_contents %}
+{{ error }}
+<div id='wrapper'>
+	<form action='{{url_for('register')}}' method='POST' class='form'>
+	<p class='field required half'>
+		<label class='label required' for='name'>Full Name</label>
+		<input class='text-input' id='name' name='name' placeholder="First Last"required type='text'>
+	</p>
+	<p class='field required half'>
+		<label class='label' for='zid'>zid</label>
+		<input class='text-input' id='zid' name='zid' placeholder="z5555555"required type='text'>
+	</p>
+	<p class='field required half'>
+		<label class='label' for='email'>E-mail</label>
+		<input class='text-input' id='email' name='email' placeholder="z5555555@unsw.edu.au"required type='email'>
+	</p>
+
+	<p class='field'>
+		<label class='label' for='password'>Password</label>
+		<input class='textarea' cols='50' id='message' name='password' required rows='4' type='password'></input>
+	</p>
+	<p class='field'>
+		<label class='label' for='password-confirmation'>Confirm Password</label>
+		<input class='text-input' cols='50' id='message' name='confirm-password' required rows='4' type='password'></input>
+	</p>
+	<p class='field required half'>
+		<label class='label' for='home_suburb'>Home Suburb</label>
+		<input class='text-input' id='home_suburb' name='home_suburb' placeholder="Kensington" required type='text'>
+	</p>
+	<p class='field required half'>
+		<label class='label' for='birthday'>Birthday</label>
+		<input class='text-input' id='birthday' name='birthday' placeholder="YYYY-MM-DD"required type='text'>
+	</p>
+
+	<p class='field required half'>
+		<label class='label' for='program'>Degree Program</label>
+		<input class='text-input' id='program' name='program' placeholder="Foundation Arts"required type='text'>
+	</p>
+	<p class='field'>
+		<label class='label' for='courses'>Courses</label>
+		<textarea class='textarea' cols='50' id='message' name='message' placeholder="e.g 2015 S1 COMP1911, 2015 S1 ENGG1000, 2015 S1 MATH1131, 2015 S1 PHYS1121, 2015 S2 CHEM1011, 2015 S2 CVEN1300, 2015 S2 ENGG1400,2017 S1 ENGG1000" required rows='4'></textarea>
+	</p>
+	<p class='field'>
+		<input class='button' type='submit' value='REGISTER'>
+	</p>
+	</form>
+</div>
+<p>
+</form>
+{% endblock %}

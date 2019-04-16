@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+
+
+<div class="unswtalk-post-page">
+
+
+	<div class="post">
+		<div class="post-display-picture"><a href="{{ url_for ( 'profile_page', student_zid=post['from'] ) }}"><img src="{{ url_for ( 'serve_display_picture', student_zid=post['from'] ) }}"><p>{{ find_name(post['from']) }}</p>
+</a></div>
+		<div class="post-text">
+        {% if session['zid'] == post['from'] %} 
+            <form method="POST" action="{{ url_for ('comment_on_post',post_author=post['from'],post_id=post['post_id']) }}">
+                <input type="submit" name="action" value="Delete Comment" class="unswtalk_button">
+                <input type="submit" name="action" value="Edit Comment" class="unswtalk_button">
+            </form>
+        {% endif %}
+			<p>{{ nicefy_time(post['time']) }}</p>
+			<p>{{ post['message']|clickify_zids|safe }}</p>
+		</div>
+		<form method="POST" action="{{ url_for ('comment_on_post',post_author=root_author,post_id=post['post_id']) }}">
+			<input type="text" name="comment" placeholder="Write a comment...">
+			<input type="submit" value="Comment" class="unswtalk_button">
+		</form>
+	</div>
+
+
+	<div class="comments">
+		{% for comment in post['comments'] %}	 
+		<div class="comment">
+			<div class="comment-display-picture"><a href="{{ url_for ( 'profile_page', student_zid=comment['from'] ) }}"><img src="{{ url_for ( 'serve_display_picture', student_zid=comment['from'] ) }}"></a></div>
+			<div class="comment-text">
+                {% if session['zid'] == comment['from'] %} 
+                    <form method="POST" action="{{ url_for ('comment_on_post',post_author=post['from'],post_id=post['post_id']) }}">
+                        <input type="submit" name="action" value="Delete Comment" class="unswtalk_button">
+                        <input type="submit" name="action" value="Edit Comment" class="unswtalk_button">
+                    </form>
+                {% endif %}
+				<a href="{{ url_for ( 'profile_page', student_zid=post['from'] ) }}"><p>{{ find_name(comment['from']) }}</p></a>
+				<a href="{{ url_for ('comment_on_post',post_author=root_author,post_id=comment['post_id']) }}"><p>{{ nicefy_time(comment['time']) }}</p></a>
+				<p>{{ comment['message']|clickify_zids|safe }}</p>
+			</div>
+			<div class="comment-form">
+				<form method="POST" action="{{ url_for ('comment_on_post',post_author=root_author,post_id=comment['post_id']) }}">
+					<input type="text" name="comment" placeholder="Write a comment...">
+					<input type="submit" value="Comment" class="unswtalk_button">
+				</form>
+			</div>
+
+		</div>
+		{% endfor %}
+	</div>
+
+
+</div>
+
+{% endblock %}

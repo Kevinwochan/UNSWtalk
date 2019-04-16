@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+<div class="unswtalk-search-results">
+
+You searched for {{ searched_string }}
+
+	<div class="search-results">
+
+
+		<h1>People results</h1>
+		<div class="people">
+		{% for result in search_results %}
+		<li>
+			<div class="thumnail-medium">
+				<a href="{{ url_for ( 'profile_page', student_zid=result ) }}"><img src="{{ url_for ( 'serve_display_picture', student_zid=result ) }}"></a>
+			<div>
+			<div class="name">
+				<a href="{{ url_for ( 'profile_page', student_zid=result ) }}">{{ find_name(result) }}</a>
+			</div>
+		</li>
+		{% endfor %}
+		<div>
+
+
+		<h1>Post results</h1>
+		<div class="comments">
+			{% for comment in post_results %}	 
+			<div class="comment {{comment['post_id']}}">
+				<div class="comment-display-picture" ><a href="{{ url_for ( 'profile_page', student_zid=comment['from'] ) }}"><img src="{{ url_for ( 'serve_display_picture', student_zid=comment['from'] ) }}"></a></div>
+				<div class="comment-text">
+				<a href="{{ url_for ( 'comment_on_post',post_author=comment['from'],post_id=comment['post_id'] ) }}"><p>{{ nicefy_time(comment['time']) }}</p></a>
+					<p>{{ comment['message'] }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
+	</div>
+
+{% endblock %}

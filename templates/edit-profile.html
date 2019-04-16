@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+
+
+<div class="unswtalk_user_details">
+	<div class="profile-section" style="height:600px">
+		<div class="profile-picture" style="float-left;">
+			<img src="{{ url_for ('serve_display_picture', student_zid=student_profile['zid'] ) }}">
+		</div>
+
+		<div class="profie-info" style="float:right;"> 
+			{% if session['zid'] == student_profile['zid'] %}
+		  <form method="POST" action="{{url_for('edit_profile_info',student_zid=session['zid'])}}" method='POST'>
+				<p class='field  half'>
+					 <label class='label ' for='full_name'>Full Name</label>
+					 <input class='text-input' name='full_name' value="{{student_profile['full_name']}}" type='text'>
+				</p>
+				<p class='field  half'>
+					 <label class='label' for='email'>E-mail</label>
+					 <input class='text-input' name='email' value="{{student_profile['email']}}" type='email'>
+				</p>
+
+				<p class='field'>
+					 <label class='label' for='password'>Password</label>
+					 <input class='textarea' cols='50' name='password'  rows='4' type='password'></input>
+				</p>
+				<p class='field'>
+					 <label class='label' for='password-confirmation'>Confirm current password</label>
+					 <input class='text-input' cols='50' name='confirm-password'  rows='4' type='password'></input>
+				</p>
+				<p class='field  half'>
+					 <label class='label' for='home_suburb'>Home Suburb</label>
+					 <input class='text-input' name='home_suburb' value="{{student_profile['home_suburb']}}"  type='text'>
+				</p>
+				<p class='field  half'>
+					 <label class='label' for='birthday'>Birthday</label>
+					 <input class='text-input' name='birthday' value="{{student_profile['birthday']}}"  type='text'>
+				</p>
+
+				<p class='field  half'>
+					 <label class='label' for='program'>Degree Program</label>
+					 <input class='text-input' name='program' value="{{student_profile['program']}}" type='text'>
+				</p>
+				<p class='field'>
+					 <label class='label' for='courses'>Courses</label>
+					 <textarea class='textarea' cols='50' name='courses' placeholder="{{student_profile['courses']}}" value="{{student_profile['courses']}}"  rows='4'></textarea>
+				</p>
+				<p class='field'>
+						  <label class='label' for='about_me'>About Me</label>
+					 <textarea class='textarea' cols='50' name='about_me' placeholder="{{ student_profile.get('about_me',' ') }}" value="{{ student_profile.get('about_me',' ') }}"  rows='4'></textarea>
+				</p>
+
+				<p class='field'>
+					 <input class='button' type='submit' name='action' value='SAVE CHANGES'>
+				</p>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

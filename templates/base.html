@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>unswtalk</title>
+<link href="{{url_for('static', filename='UNSWtalk.css')}}") rel="stylesheet">
+</head>
+<body>
+<div class="nav-bar">
+<ul>
+	
+	{% if session['zid'] %}
+	<li><a class="active" href="{{ url_for('news_feed') }}">Home</a></li>
+	<li><form method="POST" action="{{ url_for ('search_redirect') }}"><input type="text" name="searched_string" placeholder="Search" required><input type="submit" value="Search" class="unswtalk_button"></form></li>
+	<li><a href="{{ url_for('logout') }}">Logout</a></li>
+	<li><a href="{{ url_for('profile_page',student_zid=session['zid']) }}">Profile</a></li>
+	{% else %}
+	<li><a href="{{ url_for('login') }}">Login</a></li>
+	<li><a href="{{ url_for('register') }}">Register</a></li>
+	{% endif %}
+</ul>
+</div>
+
+<div class="unswtalk_heading">
+UNSWtalk
+</div>
+
+<div class="page-container" style="max-width:800px;margin:auto;">
+{% block body_contents %}
+{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body_contents %}
+{{ error }}
+<p>
+
+<form method="POST" action="login">
+	<p>zid:<input name="zid" ></p>
+	<p>password: <input type="password" name="password" ></p>
+	<input type="submit" value="Login" >
+</form>
+
+<p>
+
+<form method="POST" action="{{url_for('forgot_password_page')}}">
+	<label>Forgot your password?</label>
+<input type="submit" value="Recover Password" >
+</form>
+
+<p>
+
+<form method="POST" action="{{url_for('register')}}">
+	<label>Dont have an account? Register now!</label>
+<input type="submit" value="Register" >
+</form>
+
+{% endblock %}

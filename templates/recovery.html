@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body_contents %}
+{{ error }}
+<p>
+
+<form method="POST" action="{{ url_for(passwordrecovery) }}">
+	<p>To reset your password we will send a recovery link to your registered email</p>
+	<p>please enter your zid: <input name="zid" ></p>
+	<input type="submit" value="send email" >
+</form>
+
+{% endblock %}

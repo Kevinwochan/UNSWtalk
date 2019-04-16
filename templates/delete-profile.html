@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+
+
+<div class="unswtalk_user_details">
+
+    <h1>Are you sure you want to delete your account?<h1>
+	<div class="profile-section">
+		<div class="profile-picture" style="float-left;">
+			<img src="{{ url_for ('serve_display_picture', student_zid=student_profile['zid'] ) }}">
+		</div>
+        {% if session['zid'] == student_profile['zid'] %}
+        <form method="POST" action="">
+            <input type="submit" name="action" value='Return to profile' class="unswtalk_button">
+            <input type="submit" name="action" value='Delete Account' class="unswtalk_button">
+            <input type="hidden" name="user" value={{ session['zid'] }}>
+        </form>
+        {% endif %}
+	</div>
+
+    <h1>These celebrities will miss you!</h1>
+    <ul class="friends-list">
+	{% for friend in student_profile['friends'] %}
+		<li>
+			<a href="{{ url_for ( 'profile_page', student_zid=friend ) }}"><img src="{{ url_for ( 'serve_display_picture', student_zid=friend ) }}"></a>
+				<div class="name"><a href="{{ url_for ( 'profile_page', student_zid=friend ) }}">{{ find_name(friend) }}</a></div>
+		</li>
+	{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock %}
